@@ -1,0 +1,35 @@
+Code:
+
+
+int pirOutput=9;
+int buzzer=11;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(pirOutput,INPUT);
+ 
+  digitalWrite(pirOutput,LOW);
+}
+void loop()
+{
+  if(digitalRead(pirOutput)==HIGH)
+  {
+    
+    Serial.println("Alarm Activated! ");
+    delay(1000);
+    Serial.println("ATD+917339472720;");// change your number with country code like +91xxxxxxxxxx
+    int i;
+    for(i=0;i<20;i++)
+    {
+      tone(buzzer,450);
+    delay(500);
+    noTone(buzzer);
+    delay(500);
+    }
+    delay(1000);
+    Serial.println("ATH");
+    delay(1000);
+    
+  }
+}
